@@ -16,5 +16,5 @@ int main()
 	for (auto item : vec)
 		cout << item << '\t';
 
-	cout << '\n' << *max_element(vec.begin(), vec.end(), [](int x, int y) { if (x < 0 && y < 0) return x < y; else return 0; }) << '\n';
+	cout << '\n' << *max_element(vec.begin(), remove_if(vec.begin(), vec.end(), [](int i) { return i >= 0 ? true : false; }), [](int x, int y) { return x < y;}) << '\n';
 }
