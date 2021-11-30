@@ -39,6 +39,6 @@ int main()
 
 	sort(vec.begin(), vec.end(), funcSort);
 
-	cout << "\nAfter:\n";
+	cout << "\n\nAfter:\n";
 	for_each(vec.begin(), vec.end(), [](string i) {cout << i << '\t'; });
 }

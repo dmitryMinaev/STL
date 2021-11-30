@@ -10,8 +10,8 @@ int main()
 	srand(time(0));
 	vector<int> vec;
 
-	for (int i = 0; i < 15; i++)
-		vec.push_back(-20 + rand() % 60);
+	for (int i = 0; i < 12; i++)
+		vec.push_back(-25 + rand() % 60);
 
 	cout << "Before:\n";
 	for_each(vec.begin(), vec.end(), [](int i) {cout << i << '\t'; });

@@ -10,12 +10,35 @@ vector<string> PalindromFilter(vector<string> words, int minLength)
 	vector<string> res;
 
 	int resizeLength = words.size();
-	auto func = [minLength, &resizeLength](string i)
+
+	auto funcPalindrom = [](string s) -> bool
+	{
+		int i = 0;
+		while (i < s.length())
+		{
+			if (s[i] != s[s.length() - i - 1])
+				return false;
+
+			i++;
+		}
+
+		return true;
+	};
+
+	auto func = [funcPalindrom, minLength, &resizeLength](string i) -> bool
 	{
 		if (i.length() < minLength)
+		{
 			resizeLength--;
+			return true;
+		}
+		else if (!funcPalindrom(i))
+		{
+			resizeLength--;
+			return true;
+		}
 
-		return i.length() < minLength;
+		return false;
 	};
 
 	auto iter = remove_if(words.begin(), words.end(), func);
@@ -28,9 +51,9 @@ vector<string> PalindromFilter(vector<string> words, int minLength)
 int main()
 {
 	srand(time(0));
-	vector<string> vec{ "absd", "asf", "qwerty", "qwfghgff", "s", "sd", "qwe", "qwjlty", "house", "pig" };
+	vector<string> vec{ "absdsba", "asfsa", "qwerty", "qwfghgff", "s", "sd", "qwe", "qwjlty", "house", "pigip", "aba", "abababa"};
 
-	int minLength = 8;
+	int minLength = 4;
 	auto res = PalindromFilter(vec, minLength);
 
 	cout << "Min length:" << minLength << endl;
